@@ -2,21 +2,21 @@ import os
 import numpy as np
 
 from keras import backend as K
-from keras.legacy.interfaces import generate_legacy_interface, recurrent_args_preprocessor
+#from keras.legacy.interfaces import generate_legacy_interface, recurrent_args_preprocessor
 from keras.models import model_from_json
 
-legacy_prednet_support = generate_legacy_interface(
-    allowed_positional_args=['stack_sizes', 'R_stack_sizes',
-                            'A_filt_sizes', 'Ahat_filt_sizes', 'R_filt_sizes'],
-    conversions=[('dim_ordering', 'data_format'),
-                 ('consume_less', 'implementation')],
-    value_conversions={'dim_ordering': {'tf': 'channels_last',
-                                        'th': 'channels_first',
-                                        'default': None},
-                        'consume_less': {'cpu': 0,
-                                        'mem': 1,
-                                        'gpu': 2}},
-    preprocessor=recurrent_args_preprocessor)
+#legacy_prednet_support = generate_legacy_interface(
+#    allowed_positional_args=['stack_sizes', 'R_stack_sizes',
+#                            'A_filt_sizes', 'Ahat_filt_sizes', 'R_filt_sizes'],
+#    conversions=[('dim_ordering', 'data_format'),
+#                 ('consume_less', 'implementation')],
+#    value_conversions={'dim_ordering': {'tf': 'channels_last',
+#                                        'th': 'channels_first',
+#                                        'default': None},
+#                        'consume_less': {'cpu': 0,
+#                                        'mem': 1,
+#                                        'gpu': 2}},
+#    preprocessor=recurrent_args_preprocessor)
 
 # Convert old Keras (1.2) json models and weights to Keras 2.0
 def convert_model_to_keras2(old_json_file, old_weights_file, new_json_file, new_weights_file):
